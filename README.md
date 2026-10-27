@@ -48,9 +48,17 @@ and choose **Open Preview** (Ctrl+Shift+V).
 ## Method
 <Formulas and model assumptions, in plain English. Cite the textbook section.>
 
+For an option held to expiration, a call's payoff per share is `max(S_T - K, 0)` and a put's
+payoff per share is `max(K - S_T, 0)`. Long-position profit is payoff minus the premium paid;
+short-position profit is the premium received minus payoff. These formulas exclude fees and
+other costs. The app's other pricing formulas are Black-Scholes-Merton estimates under the
+assumptions stated on screen.
+
 ## Tests
 Run `pytest`. Each test compares our code with a number we checked independently:
-- `tests/test_pricing.py`: Black-Scholes prices match Hull's Chapter 15 example; put-call parity holds.
+- `tests/test_pricing.py`: expiration payoff and profit match the supplied class examples; tests
+  also check break-even, long/short symmetry, and payoff limits. Existing Black-Scholes tests
+  compare with the Hull example and put-call parity.
 
 The agent skill in `.agents/skills/check-the-numbers/` tells coding agents how to add checks like these.
 
@@ -103,4 +111,3 @@ project needs: a formula, a test, a data file and its notes, part of the README,
 **5 points per student** (all or nothing). Check the history together, and never share accounts.
 The other **95 points are shared** by the team, and every member presents part of the group
 presentation and demo.
-
